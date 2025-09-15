@@ -1,7 +1,5 @@
 Backtest ABC Fractals
 
-Ce projet implémente un moteur de backtest basé sur les setups fractals A–B–C, avec gestion du risque et visualisation.
-L’objectif est d’analyser la robustesse de la stratégie à travers des métriques de performance, un journal de trades complet, et des graphiques interactifs.
 
 🚀 Fonctionnalités
 
@@ -145,6 +143,6 @@ Sauvegardées dans reports/tables/.
 
 
 Projet développé par Anostraton
-Licence : MIT (modifiable selon tes besoins).
+Licence : MIT
 
 
