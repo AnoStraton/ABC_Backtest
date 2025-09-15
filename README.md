@@ -46,7 +46,7 @@ Export CSV du journal des trades.
 
 
 
-Architecture
+🏗 Architecture
 
 Le projet est conçu en modules séparés pour plus de clarté et d’évolutivité.
 
@@ -71,7 +71,7 @@ backtest.py → script principal (orchestration du pipeline).
 
 
 
-Installation
+⚙️Installation
 Dépendances
 
 Le projet nécessite Python 3.10+ et les bibliothèques suivantes :
@@ -89,7 +89,7 @@ pip install -r requirements.txt
 
 
 
-Utilisation
+▶️Utilisation
 Lancer un backtest:
 
 python backtest.py
@@ -112,7 +112,7 @@ Logs console : suivi détaillé de l’exécution (DEBUG/INFO).
 
 
 
-Paramètres principaux
+🔑Paramètres principaux
 
 Les paramètres clés (actuellement dans backtest.py, bientôt centralisés dans config/) :
 
@@ -132,7 +132,7 @@ trades_filename → nom du fichier CSV de sortie des trades.
 
 
 
-Structure des sorties
+📂Structure des sorties
 
 Trades CSV :
 Colonnes : pair, entry_time, exit_time, direction, entry_price, exit_price, SL, TP, pnl_fixed, pnl_compound, pnl_daily, result.
