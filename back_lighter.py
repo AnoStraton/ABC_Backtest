@@ -71,7 +71,7 @@ sessions = {
 }
 
 # Nom du fichier CSV pour sauvegarder les trades
-trades_filename = 'trades_btcusdperp_m1_360d.csv'  # Vous pouvez changer ce nom selon vos besoins
+trades_filename = 'trades_lighter_btcusdc_1m.csv'  # Vous pouvez changer ce nom selon vos besoins
 
 # ============================================================
 # 2) FONCTIONS UTILITAIRES
@@ -558,13 +558,13 @@ def execution(b_point, c, direction, data, p_fractal, psl, day_balance_start, op
 # ============================================================
 
 print("[DEBUG] Lecture du fichier CSV et génération du dataset ...")
-h4_rows = module.tools.get_dataset("data/ohlcv_paradex_BTC-USD-PERP_1m_360d.csv")
+h4_rows = module.tools.get_dataset("data/ohlcv_lighter_BTC-USDC_1m_full.csv")
 print("[DEBUG] h4_rows (dataset) récupéré :", len(h4_rows))
 
 fractals = module.structure.fractality(h4_rows)
 print("[DEBUG] fractals générés :", len(fractals))
 
-df = pd.read_csv("data/ohlcv_paradex_BTC-USD-PERP_1m_360d.csv", index_col=0, parse_dates=True)
+df = pd.read_csv("data/ohlcv_lighter_BTC-USDC_1m_full.csv", index_col=0, parse_dates=True)
 print("[DEBUG] df (pandas DataFrame) chargé :", df.shape)
 
 print("=== APERÇU DES DONNÉES ===")
