@@ -1,148 +1,30 @@
-Backtest ABC Fractals
+# ABC Backtest Paradex
 
+Backtest offline de la stratégie ABC (fractales 3 barres → setups A–B–C → exécution SL/TP) sur OHLCV Paradex.
 
-🚀 Fonctionnalités
+## Contenu
 
-Détection fractales HH / LH / HL / LL à partir d’un dataset OHLC.
+- `back_paradex2.py` — script principal
+- `module/tools.py` — `get_dataset(file)` (lecture CSV)
+- `module/structure.py` — `fractality(rows)` (HH/LH/LL/HL)
 
-Construction et validation de setups A–B–C.
+## Données
 
-Exécution des trades avec SL / TP / invalidation, prise en compte des frais.
+Attendu par le script (non inclus) :
 
-Gestion de trois modes de risque :
+`data/ohlcv_paradex_BTC-USD-PERP_1m_360d.csv`
 
-Risque fixe (% du capital initial),
+## Lancer
 
-Risque composé (% du capital courant),
-
-Risque daily (% du capital fixé en début de journée).
-
-Calcul de métriques clés :
-
-WinRate (WR),
-
-Profit Factor (PF),
-
-Sharpe Ratio,
-
-SQN,
-
-Max Drawdown (et indices associés).
-
-Agrégations par jour de la semaine et par session (Asie, Londres, New York).
-
-Visualisation :
-
-Chandeliers avec fractals + overlays (SL, TP, PE, invalidations/validations),
-
-Courbes d’équité avec drawdown surligné,
-
-Bar charts par jour et par session.
-
-Export CSV du journal des trades.
-
-
-
-
-🏗 Architecture
-
-Le projet est conçu en modules séparés pour plus de clarté et d’évolutivité.
-
-CSV → tools → structure → signals → executor → analytics → visualize → export
-
-module/tools.py → gestion des datasets (I/O, normalisation).
-
-module/structure.py → détection / classification des fractales.
-
-module/signals.py → construction des setups A–B–C (règles de validation).
-
-module/executor.py → exécution des trades (SL/TP, PnL, sizing).
-
-module/analytics.py → calcul des courbes et métriques.
-
-module/visualize.py → tracés des chandeliers, fractals, equity curves.
-
-module/export.py → export des résultats (CSV, figures).
-
-backtest.py → script principal (orchestration du pipeline).
-
-
-
-
-⚙️Installation
-Dépendances
-
-Le projet nécessite Python 3.10+ et les bibliothèques suivantes :
-
-pandas
-numpy
-matplotlib
-mplfinance
-pytz
-
-Installe-les avec :
-
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+python back_paradex2.py
+```
 
+Exécuter depuis la racine du dépôt pour que `import module.tools` / `import module.structure` fonctionnent.
 
+## Licence / provenance
 
-
-▶️Utilisation
-Lancer un backtest:
-
-python backtest.py
-
-
-Résultats générés
-
-Plots :
-
-Chandeliers + fractals + segments SL/TP/PE/invalidation.
-
-Equity curves (fixe / composé / daily).
-
-Bar charts par jour et par session.
-
-CSV des trades : trades_<symbole>_<profil>.csv
-
-Logs console : suivi détaillé de l’exécution (DEBUG/INFO).
-
-
-
-
-🔑Paramètres principaux
-
-Les paramètres clés (actuellement dans backtest.py, bientôt centralisés dans config/) :
-
-maximum_candle_between_a_and_c → nb max de bougies entre A et C.
-
-riskratio → ratio R:R (ex: 2 = TP à 2R).
-
-risk_percentage → % du capital risqué par trade.
-
-fees → frais de transaction (ex: 0.0004 = 0.04%).
-
-capital_init → capital initial du backtest.
-
-sessions → plages horaires (UTC) pour Asie / Londres / New York.
-
-trades_filename → nom du fichier CSV de sortie des trades.
-
-
-
-📂Structure des sorties
-
-Trades CSV :
-Colonnes : pair, entry_time, exit_time, direction, entry_price, exit_price, SL, TP, pnl_fixed, pnl_compound, pnl_daily, result.
-
-Plots :
-Sauvegardés dans reports/figures/.
-
-Métriques :
-Sauvegardées dans reports/tables/.
-
-
-Projet développé par Anostraton
-Licence : MIT
-
-
+Sources copiées depuis `Documents\ABCBOT` (Nathan). Pas de live trading.
